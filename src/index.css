@@ -1,0 +1,218 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Amigos de Algodão - Halloween Vibrant Theme */
+    --background: 30 100% 98%; /* Warm white */
+    --foreground: 25 15% 25%; /* Dark brown */
+
+    --card: 30 100% 98%;
+    --card-foreground: 25 15% 25%;
+
+    --popover: 30 100% 98%;
+    --popover-foreground: 25 15% 25%;
+
+    /* Halloween Orange (pumpkin) */
+    --primary: 25 95% 58%; /* Vibrant orange */
+    --primary-foreground: 0 0% 100%;
+
+    /* Halloween Magenta */
+    --secondary: 320 70% 55%; /* Vibrant magenta */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 30 60% 92%;
+    --muted-foreground: 25 15% 45%;
+
+    /* Halloween Purple accent */
+    --accent: 280 65% 60%; /* Deep purple */
+    --accent-foreground: 0 0% 100%;
+
+    /* Complementary warm tone */
+    --warm: 15 90% 65%; /* Coral/peach */
+    --warm-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 40% 88%;
+    --input: 30 50% 94%;
+    --ring: 25 95% 58%;
+
+    --radius: 1.5rem;
+
+    --sidebar-background: 30 100% 98%;
+    --sidebar-foreground: 25 15% 25%;
+    --sidebar-primary: 25 95% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 30 60% 92%;
+    --sidebar-accent-foreground: 25 15% 25%;
+    --sidebar-border: 30 40% 88%;
+    --sidebar-ring: 25 95% 58%;
+  }
+
+  .dark {
+    /* Halloween Dark Mode */
+    --background: 25 20% 12%; /* Dark brown-gray */
+    --foreground: 30 100% 98%;
+
+    --card: 25 20% 16%;
+    --card-foreground: 30 100% 98%;
+
+    --popover: 25 20% 16%;
+    --popover-foreground: 30 100% 98%;
+
+    --primary: 25 95% 58%; /* Same vibrant orange */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 320 70% 55%; /* Same vibrant magenta */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 25 20% 22%;
+    --muted-foreground: 30 30% 70%;
+
+    --accent: 280 65% 60%; /* Same purple */
+    --accent-foreground: 0 0% 100%;
+
+    --warm: 15 90% 65%;
+    --warm-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 25 20% 25%;
+    --input: 25 20% 22%;
+    --ring: 25 95% 58%;
+    --sidebar-background: 25 20% 12%;
+    --sidebar-foreground: 30 100% 98%;
+    --sidebar-primary: 25 95% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 25 20% 22%;
+    --sidebar-accent-foreground: 30 100% 98%;
+    --sidebar-border: 25 20% 25%;
+    --sidebar-ring: 25 95% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Baloo 2', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom animations for floating elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes gentleWave {
+  0%, 100% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Utility classes */
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-slow {
+    animation: floatSlow 8s ease-in-out infinite;
+  }
+
+  .animate-sparkle {
+    animation: sparkle 3s ease-in-out infinite;
+  }
+
+  .animate-wave {
+    animation: gentleWave 4s ease-in-out infinite;
+  }
+
+  .gradient-pastel {
+    background: linear-gradient(135deg, 
+      hsl(var(--accent)) 0%, 
+      hsl(var(--primary)) 25%, 
+      hsl(var(--secondary)) 50%, 
+      hsl(var(--warm)) 75%,
+      hsl(var(--accent)) 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
+  }
+
+  .gradient-warm {
+    background: linear-gradient(135deg, hsl(var(--warm)) 0%, hsl(var(--secondary)) 100%);
+  }
+
+  .gradient-button {
+    background: linear-gradient(135deg, 
+      hsl(var(--primary)) 0%, 
+      hsl(var(--accent)) 50%, 
+      hsl(var(--secondary)) 100%);
+  }
+
+  .text-shadow-soft {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+}
